@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>ประเมินความพึงพอใจ · กลุ่มงานอาชีวเวชกรรม โรงพยาบาลสันทราย</title>
+<meta name="description" content="แบบประเมินความพึงพอใจผู้รับบริการ กลุ่มงานอาชีวเวชกรรม โรงพยาบาลสันทราย">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;height:100%;background:#fff;overflow:hidden}
+  #frame{position:fixed;inset:0;width:100%;height:100%;border:0;display:block}
+  #load{position:fixed;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;
+        justify-content:center;gap:16px;background:#fff;
+        font-family:"Chakra Petch","Noto Sans Thai",system-ui,sans-serif;color:#6B7280;font-size:15px;
+        transition:opacity .45s ease}
+  #load.gone{opacity:0;pointer-events:none}
+  .sp{width:36px;height:36px;border:3px solid #E5E7EB;border-top-color:#15803D;border-radius:50%;
+      animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.sp{animation:none}}
+</style>
+</head>
+<body>
+
+<div id="load"><div class="sp"></div><div>กำลังเปิดแบบประเมิน…</div></div>
+
+<iframe id="frame" title="แบบประเมินความพึงพอใจ" allow="clipboard-write"></iframe>
+
+<script>
+  /* ลิงก์เว็บแอปของ Apps Script — ถ้า Deploy ใหม่จนได้ URL ใหม่ ให้แก้บรรทัดนี้บรรทัดเดียว */
+  var EXEC = "https://script.google.com/macros/s/AKfycbwkCAT4JPn50iuPXozDf8f3dxrcQSf-L5pPoYIVV6DyMNCuktg10edpThQUWHb6goSB/exec";
+
+  var f = document.getElementById("frame");
+  f.src = EXEC + (location.search || "");          /* ส่งต่อ ?u=... ให้แบบประเมินด้วย */
+  f.addEventListener("load", function () {
+    document.getElementById("load").classList.add("gone");
+  });
+  setTimeout(function () { document.getElementById("load").classList.add("gone"); }, 9000);
+</script>
+</body>
+</html>
